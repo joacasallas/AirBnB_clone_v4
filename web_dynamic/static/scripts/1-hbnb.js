@@ -1,24 +1,13 @@
-/*
-SINTAXIS EQUIVALENTES FUNCTION READY()
-$( handler )
-$( document ).ready( handler )
-$( "document" ).ready( handler )
-$( "img" ).ready( handler )
-$().ready( handler )*/
+document.addEventListener('DOMContentLoaded', () => {
+    let checkboxes = document.querySelectorAll(".each_amenity");
+    let amenitiesChecked_list = [];
 
-
-/*
-PROTOTIPO FUNCION READY()
-$( document ).ready( function() {
-    // Mi código de inicialización
-    $( window ).on("load", function(){
-       // Mi código de ejecucion
-    });
-} )*/
-
-$( document ).ready(function() {
-    let boxChecked = {};
-    $( document ).on('load', function(){
-        //code
+    document.addEventListener("click", function() {
+        checkboxes.forEach((checkbox) => {
+            if (checkbox.checked) {
+                amenitiesChecked_list += checkbox.getAttribute("data-name") + ", ";
+            }
+        });
+        document.getElementById("amenities_selected").innerText = amenitiesChecked_list;
     });
 });
