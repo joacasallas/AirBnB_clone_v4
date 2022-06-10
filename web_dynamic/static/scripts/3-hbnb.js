@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     //task 4 = store places and add section places to html
-    //este punto no esta terminado
 
     const options = {
         method: 'POST',
@@ -34,14 +33,11 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     fetch('http://0.0.0.0:5001/api/v1/places_search/', options)
+    .then(response => response.json())
     .then(data => {
-        if (!data.ok) {
-          throw Error(data.status);
-         }
-        return data.json();
-        }).then(update => {
-        console.log(update);
-        }).catch(e => {
-        console.log(e);
-        });
+        console.log('Success:', data);
+    })
+    .catch((error) => {
+        console.error('Error: ', error);
+    });
 });
